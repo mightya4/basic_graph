@@ -7,5 +7,9 @@ public class BasicGraph {
             this.label = label;
         }
     }
+
+    class Graph {
+        private Map<Vertex, List<Vertex>> adjVertices;
+    }
     public static void main(String[] args) {}
 }
