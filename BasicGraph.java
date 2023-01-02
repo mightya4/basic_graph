@@ -3,15 +3,16 @@ import java.util.Map;
 import java.util.ArrayList;
 public class BasicGraph {
 
-    //Build Vertex for each node of Graph
-    class Vertex {
-        String label;
-        Vertex(String label) {
-            this.label = label;
-        }
-    }
-
     class Graph {
+
+        //Build Vertex for each node of Graph
+        class Vertex {
+            String label;
+            Vertex(String label) {
+                this.label = label;
+            }
+        }
+
         //Map takes parameters Vertex + adjacency list of vertex
         private Map<Vertex, List<Vertex>> adjVertices;
 
@@ -49,6 +50,16 @@ public class BasicGraph {
         //Get Adjacent Vertices
         List<Vertex> getAdjVertices(String label) {
             return adjVertices.get(new Vertex(label));
+        }
+
+        //Print Graph Elements
+        String printGraph() {
+            StringBuffer sb = new StringBuffer();
+            for(Vertex v : adjVertices.keySet()) {
+                sb.append(v);
+                sb.append(adjVertices.get(v));
+            }
+            return sb.toString();
         }
 
         
