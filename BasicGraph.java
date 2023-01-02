@@ -1,6 +1,8 @@
 import java.util.List;
 import java.util.Map;
+import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 public class BasicGraph {
 
     class Graph {
@@ -15,6 +17,10 @@ public class BasicGraph {
 
         //Map takes parameters Vertex + adjacency list of vertex
         private Map<Vertex, List<Vertex>> adjVertices;
+
+        Graph() {
+            this.adjVertices = new HashMap<Vertex, List<Vertex>>();
+        }
 
         //Add Vertex while vertex does not exist
         void addVertex(String label) {
@@ -61,6 +67,7 @@ public class BasicGraph {
             }
             return sb.toString();
         }
+
 
         
     }
