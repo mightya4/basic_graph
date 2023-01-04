@@ -15,6 +15,7 @@ public class BasicGraph {
                 this.label = label;
             }
 
+            //Added hashCode + Added equals Method to Vertex class which will provide instances to Hashmap
             @Override
             public int hashCode() {
                 return Objects.hashCode(label);
