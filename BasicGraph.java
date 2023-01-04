@@ -3,15 +3,26 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
+import java.util.Objects;
 public class BasicGraph {
 
-    class Graph {
+    static class Graph {
 
         //Build Vertex for each node of Graph
         class Vertex {
             String label;
             Vertex(String label) {
                 this.label = label;
+            }
+
+            @Override
+            public int hashCode() {
+                return Objects.hashCode(label);
+            }
+        
+            @Override
+            public boolean equals(Object obj) {
+                return label.equals(((Vertex) obj).label);
             }
         }
 
@@ -39,8 +50,11 @@ public class BasicGraph {
         void addEdge(String label1, String label2){
             Vertex v1 = new Vertex(label1);
             Vertex v2 = new Vertex(label2);
-            adjVertices.get(v1).add(v2);
-            adjVertices.get(v2).add(v1);
+            if((v1 != null) && (v2 != null)) {
+                adjVertices.get(v1).add(v2);
+                adjVertices.get(v2).add(v1);
+            }
+           
         }
 
         //Remove Edge between two Vertex
@@ -72,6 +86,18 @@ public class BasicGraph {
         
     }
     public static void main(String[] args) {
-        
+        Graph v1 = new Graph();
+        v1.addVertex("Bob");
+        v1.addVertex("Alice");
+        v1.addVertex("Mark");
+        v1.addVertex("Rob");
+        v1.addVertex("Maria");
+        v1.addEdge("Bob", "Alice");
+        v1.addEdge("Bob", "Rob");
+        v1.addEdge("Alice", "Mark");
+        v1.addEdge("Rob", "Mark");
+        v1.addEdge("Alice", "Maria");
+        v1.addEdge("Rob", "Maria");
+        System.out.println(v1.printGraph());
     }
 }
